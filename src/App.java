@@ -10,6 +10,7 @@ public class App {
         int tam = sc.nextInt();
         int[] arr = new int[tam];
         
+        
 
         
     }
