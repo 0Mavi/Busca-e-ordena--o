@@ -5,16 +5,14 @@ public class Busca {
     public static void buscaLinear (int[] arr, int num){
         int tam = arr.length;
 
-        System.out.println("Posições percorridas: ");
         for(int i = 0; i < tam; i++){
             if(arr[i] == num ){
-                System.out.println(" ");
-                System.out.println("Posição do numero: " + i);
+                System.out.println("\nPosição do numero: " + i);
                 return;
             }
-            System.out.print(i + " ");
         }
-
+        
+        System.out.println("Numero não encontrado!");
     }
 
     public static void buscaBinaria(int[] arr, int num){
@@ -29,7 +27,8 @@ public class Busca {
             meio = (fim + inicio) / 2;
 
             if(arr[meio] == num) {
-                System.out.println("Encontrou o número: " + num);
+                System.out.println("Encontrou o número: " + num + " na posição: " + meio);
+                
                 break;
             }
 
@@ -42,6 +41,7 @@ public class Busca {
             if(inicio > fim) {
                 System.out.println("Não encontrou o número: " + num);
             }
+
 
         }
     }

@@ -45,6 +45,24 @@ public class Ui {
         return sc.nextInt();
     }
 
+    public static int opcaoBusca(Scanner sc){
+        System.out.println("""
+                Escolha o tipo de busca:
+
+                1 - Busca Linear
+                2 - Busca Binaria
+                3 - Sair
+                """);
+        
+        return sc.nextInt();
+    }
+
+    public static int numeroBusca(Scanner sc){
+        System.out.print("Digite o numero que deseja buscar: ");
+
+        return sc.nextInt();
+    }
+
     public static void imprimirArray( int[] arr){ 
 
         for(int i = 0; i < arr.length ; i++){

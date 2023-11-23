@@ -2,6 +2,7 @@ package app;
 
 import java.util.Scanner;
 
+import algoritmos.Busca;
 import algoritmos.Ordenacao;
 
 public class App {
@@ -32,6 +33,8 @@ public class App {
                 Ordenacao.selectionSort(arr);
                 break;
             default:
+                System.out.println("Adios!");
+                System.exit(0);
                 break;
         }
 
@@ -39,6 +42,27 @@ public class App {
         Ui.imprimirTraco();
         System.out.print("Array ordenada: ");
         Ui.imprimirArray(arr);
+
+        op = Ui.opcaoBusca(sc);
+        Ui.imprimirTraco();
+        
+        int num = Ui.numeroBusca(sc);
+        
+
+        switch (op) {
+            case 1:
+                Busca.buscaLinear(arr, num);
+                break;
+            case 2:
+                Busca.buscaBinaria(arr, num);
+                break;
+            default:
+                System.out.println("Adios!");
+                System.exit(0);
+                break;
+        }
+
+
 
     }
 
