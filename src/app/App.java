@@ -17,20 +17,25 @@ public class App {
         
         System.out.print("Array gerada: ");
         Ui.imprimirArray(arr);
+        Ui.esperarEnter(sc);
 
         Ui.imprimirTraco();
 
         int op = Ui.menuOpcao(sc);
+        String tipoOrdenacao = "";
 
         switch (op) {
             case 1:
                 Ordenacao.bubbleSort(arr);
+                tipoOrdenacao = "Bubble Sort";
                 break;
             case 2:
                 Ordenacao.insertionSort(arr);
+                tipoOrdenacao = "Insertion Sort";
                 break;
             case 3:
                 Ordenacao.selectionSort(arr);
+                tipoOrdenacao = "Selection Sort";
                 break;
             default:
                 System.out.println("Adios!");
@@ -40,8 +45,10 @@ public class App {
 
 
         Ui.imprimirTraco();
-        System.out.print("Array ordenada: ");
+        System.out.print("Array ordenada por " + tipoOrdenacao + ": ");
         Ui.imprimirArray(arr);
+        Ui.esperarEnter(sc);
+        Ui.imprimirTraco();
 
         op = Ui.opcaoBusca(sc);
         Ui.imprimirTraco();
@@ -61,9 +68,10 @@ public class App {
                 System.exit(0);
                 break;
         }
+        Ui.imprimirTraco();
+        Ui.esperarEnter(sc);
 
-
-
+        System.out.println("Obrigado por usar nosso sistema!");
     }
 
     

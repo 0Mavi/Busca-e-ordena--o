@@ -63,13 +63,19 @@ public class Ui {
         return sc.nextInt();
     }
 
-    public static void imprimirArray( int[] arr){ 
+    public static void imprimirArray( int[] arr){
 
-        for(int i = 0; i < arr.length ; i++){
-            System.out.print(arr[i] + " ");
+        for (int j : arr) {
+            System.out.print(j + " ");
         }
 
         System.out.println("\n ");
+    }
+
+    public static void esperarEnter(Scanner sc){
+        System.out.println("Pressione ENTER para continuar...");
+        sc.nextLine();
+        sc.nextLine();
     }
 
     public static void imprimirTraco(){
