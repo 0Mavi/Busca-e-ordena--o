@@ -1,5 +1,7 @@
 package app;
 
+import algoritmos.Busca;
+
 import java.util.Scanner;
 
 public class Ui {
@@ -29,23 +31,27 @@ public class Ui {
             }
         }
 
+        System.out.println("Array gerada com sucesso!");
         return arr;
     }
 
     public static int menuOpcao(Scanner sc){
         System.out.println("""
-                Escolha um tipo de ordenação:
+                Escolha o que deseja fazer:
 
                 1 - Bubble Sort
-                2 - Selection Sort
-                3 - Insertion Sort
-                4 - Sair
+                2 - Insertion Sort
+                3 - Selection Sort
+                4 - Buscar
+                5 - Embaralhar array
+                6 - Gerar array
+                7 - Sair
                 """);
 
         return sc.nextInt();
     }
 
-    public static int opcaoBusca(Scanner sc){
+    public static void busca(Scanner sc, int[] arr){
         System.out.println("""
                 Escolha o tipo de busca:
 
@@ -53,8 +59,23 @@ public class Ui {
                 2 - Busca Binaria
                 3 - Sair
                 """);
-        
-        return sc.nextInt();
+        int op = sc.nextInt();
+        int num = numeroBusca(sc);
+        switch (op) {
+            case 1:
+                Busca.buscaLinear(arr, num);
+                break;
+            case 2:
+                if(!estaOrdenada(arr)){
+                    System.out.println("A array precisa estar previamente ordenada!");
+                    break;
+                }
+                Busca.buscaBinaria(arr, num);
+                break;
+            default:
+                System.out.println("Opção Inválida");
+                break;
+        }
     }
 
     public static int numeroBusca(Scanner sc){
@@ -64,7 +85,7 @@ public class Ui {
     }
 
     public static void imprimirArray( int[] arr){
-
+        System.out.print("Sua array: ");
         for (int j : arr) {
             System.out.print(j + " ");
         }
@@ -81,5 +102,32 @@ public class Ui {
     public static void imprimirTraco(){
         System.out.println("-------------------------------------");
         System.out.println(" ");
+    }
+
+    public static boolean estaOrdenada(int[] arr){
+        for (int i = 0; i < arr.length - 1; i++){
+            if (arr[i] > arr[i + 1]){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean estaNula(int[] arr){
+        if(arr == null){
+            System.out.println("Primeiro gere uma array!");
+            return true;
+        }
+        return false;
+    }
+
+    public static void embaralharArray(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            int pos = (int) (Math.random() * arr.length);
+            int temp = arr[i];
+            arr[i] = arr[pos];
+            arr[pos] = temp;
+        }
+        System.out.println("Embaralhando array!");
     }
 }

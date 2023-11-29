@@ -8,69 +8,60 @@ import algoritmos.Ordenacao;
 public class App {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
+        int op = 0;
+        int[] arr = null;
 
-        Ui.imprimirTraco();
+        while (op != 7) {
+            if(arr != null){
+                Ui.imprimirArray(arr);
+                Ui.imprimirTraco();
+            }
 
-        int[] arr = Ui.gerarArray(sc);
+            op = Ui.menuOpcao(sc);
+            String tipoOrdenacao = "";
 
-        Ui.imprimirTraco();
-        
-        System.out.print("Array gerada: ");
-        Ui.imprimirArray(arr);
-        Ui.esperarEnter(sc);
+            if(op > 0 && op < 6 && arr == null){
+                System.out.println("Primeiro gere uma array!!");
+                op = 6;
+            }
+            switch (op) {
+                case 1:
+                    Ordenacao.bubbleSort(arr);
+                    tipoOrdenacao = "Bubble Sort";
+                    break;
+                case 2:
+                    Ordenacao.insertionSort(arr);
+                    tipoOrdenacao = "Insertion Sort";
+                    break;
+                case 3:
+                    Ordenacao.selectionSort(arr);
+                    tipoOrdenacao = "Selection Sort";
+                    break;
+                case 4:
+                    Ui.busca(sc, arr);
+                    break;
+                case 5:
+                    Ui.embaralharArray(arr);
+                    break;
+                case 6:
+                    arr = Ui.gerarArray(sc);
+                    break;
+                case 7:
+                    break;
+                default:
+                    System.out.println("Opção Inválida!");
+                    break;
+            }
 
-        Ui.imprimirTraco();
 
-        int op = Ui.menuOpcao(sc);
-        String tipoOrdenacao = "";
-
-        switch (op) {
-            case 1:
-                Ordenacao.bubbleSort(arr);
-                tipoOrdenacao = "Bubble Sort";
-                break;
-            case 2:
-                Ordenacao.insertionSort(arr);
-                tipoOrdenacao = "Insertion Sort";
-                break;
-            case 3:
-                Ordenacao.selectionSort(arr);
-                tipoOrdenacao = "Selection Sort";
-                break;
-            default:
-                System.out.println("Adios!");
-                System.exit(0);
-                break;
+            Ui.imprimirTraco();
+            if (op > 0 && op < 4) {
+                Ui.imprimirArray(arr);
+                System.out.println("Ordenada por " + tipoOrdenacao);
+            }
+            Ui.esperarEnter(sc);
+            Ui.imprimirTraco();
         }
-
-
-        Ui.imprimirTraco();
-        System.out.print("Array ordenada por " + tipoOrdenacao + ": ");
-        Ui.imprimirArray(arr);
-        Ui.esperarEnter(sc);
-        Ui.imprimirTraco();
-
-        op = Ui.opcaoBusca(sc);
-        Ui.imprimirTraco();
-        
-        int num = Ui.numeroBusca(sc);
-        
-
-        switch (op) {
-            case 1:
-                Busca.buscaLinear(arr, num);
-                break;
-            case 2:
-                Busca.buscaBinaria(arr, num);
-                break;
-            default:
-                System.out.println("Adios!");
-                System.exit(0);
-                break;
-        }
-        Ui.imprimirTraco();
-        Ui.esperarEnter(sc);
-
         System.out.println("Obrigado por usar nosso sistema!");
     }
 
