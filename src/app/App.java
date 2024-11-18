@@ -48,6 +48,10 @@ public class App {
                     break;
                 case 7:
                     break;
+                case 8:
+                    Ordenacao.quickSort(arr, 0, arr.length - 1); 
+                    tipoOrdenacao = "Quick Sort";
+                    Ui.imprimirArray(arr); 
                 default:
                     System.out.println("Opção Inválida!");
                     break;
@@ -55,7 +59,7 @@ public class App {
 
 
             Ui.imprimirTraco();
-            if (op > 0 && op < 4) {
+            if (op > 0 && op < 4 || op == 8) {
                 Ui.imprimirArray(arr);
                 System.out.println("Ordenada por " + tipoOrdenacao);
             }

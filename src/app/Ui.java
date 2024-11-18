@@ -46,6 +46,7 @@ public class Ui {
                 5 - Embaralhar array
                 6 - Gerar array
                 7 - Sair
+                8 - Quicksort
                 """);
 
         return sc.nextInt();
